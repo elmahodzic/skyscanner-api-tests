@@ -58,13 +58,13 @@
 					"type": "apikey",
 					"apikey": [
 						{
-							"key": "in",
-							"value": "header",
+							"key": "value",
+							"value": "dummyapiKey",
 							"type": "string"
 						},
 						{
-							"key": "value",
-							"value": "ra66933236979928",
+							"key": "in",
+							"value": "header",
 							"type": "string"
 						},
 						{
@@ -153,13 +153,13 @@
 					"type": "apikey",
 					"apikey": [
 						{
-							"key": "in",
-							"value": "header",
+							"key": "value",
+							"value": "dummyapiKey",
 							"type": "string"
 						},
 						{
-							"key": "value",
-							"value": "ra66933236979928",
+							"key": "in",
+							"value": "header",
 							"type": "string"
 						},
 						{
@@ -258,13 +258,13 @@
 					"type": "apikey",
 					"apikey": [
 						{
-							"key": "in",
-							"value": "header",
+							"key": "value",
+							"value": "dummyapiKey",
 							"type": "string"
 						},
 						{
-							"key": "value",
-							"value": "ra66933236979928",
+							"key": "in",
+							"value": "header",
 							"type": "string"
 						},
 						{
@@ -371,13 +371,13 @@
 					"type": "apikey",
 					"apikey": [
 						{
-							"key": "in",
-							"value": "header",
+							"key": "value",
+							"value": "dummyapiKey",
 							"type": "string"
 						},
 						{
-							"key": "value",
-							"value": "ra66933236979928",
+							"key": "in",
+							"value": "header",
 							"type": "string"
 						},
 						{
@@ -475,13 +475,13 @@
 					"type": "apikey",
 					"apikey": [
 						{
-							"key": "in",
-							"value": "header",
+							"key": "value",
+							"value": "dummyapiKey",
 							"type": "string"
 						},
 						{
-							"key": "value",
-							"value": "ra66933236979928",
+							"key": "in",
+							"value": "header",
 							"type": "string"
 						},
 						{
@@ -583,13 +583,13 @@
 					"type": "apikey",
 					"apikey": [
 						{
-							"key": "in",
-							"value": "header",
+							"key": "value",
+							"value": "dummyapiKey",
 							"type": "string"
 						},
 						{
-							"key": "value",
-							"value": "ra66933236979928",
+							"key": "in",
+							"value": "header",
 							"type": "string"
 						},
 						{
