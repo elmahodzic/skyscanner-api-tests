@@ -1,0 +1,42 @@
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.*;
+import io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+import java.util.List;
+import java.util.Map;
+
+import io.restassured.common.mapper.TypeRef;
+
+public class getQoutes {
+
+	@Test
+	public void skyscannerQuotes() {
+		
+		given().
+		header("apiKey","ra66933236979928").
+		header("x-rapidapi-key", "4703c36152msh00a9bbef17f9846p1b0abfjsn65c56589cdb3").
+		header("x-rapidapi-host","skyscanner-skyscanner-flight-search-v1.p.rapidapi.com").
+		get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/BA/BAM/en-US/BELI-sky/BER-sky/2021-03-02").
+		then().	
+		statusCode(200);
+		
+		
+		List<Map<String, Object>> response = get("/response").as(new TypeRef<List<Map<String, Object>>>() {});
+		
+		assertThat(response.get(0).get("MinPrice"), equalTo(328));
+//		assertThat(response.get(0).get("name"), equalTo("An ice sculpture"));
+//		assertThat(response.get(0).get("price"), equalTo(12.5));
+//		assertThat(response.get(1).get("id"), equalTo(3));
+//		assertThat(response.get(1).get("name"), equalTo("A blue mouse"));
+//		assertThat(response.get(1).get("price"), equalTo(25.5));
+
+
+	}
+	
+	
+	
+	
+	
+}
+

@@ -1,0 +1,64 @@
+{
+	"id": "2aadb89c-7080-4d15-b163-ccf0e7e80316",
+	"name": "skyScanner environment",
+	"values": [
+		{
+			"key": "base_url",
+			"value": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+			"enabled": true
+		},
+		{
+			"key": "shortapikey",
+			"value": "{{dummyapiKey}}",
+			"enabled": true
+		},
+		{
+			"key": "apiKey",
+			"value": "{shortapikey}",
+			"enabled": true
+		},
+		{
+			"key": "x-rapidapi-key",
+			"value": "{{dummyxrapidapiKey}}",
+			"enabled": true
+		},
+		{
+			"key": "x-rapidapi-host",
+			"value": "{{dummyxrapidahost}}",
+			"enabled": true
+		},
+		{
+			"key": "useQueryString",
+			"value": "true",
+			"enabled": true
+		},
+		{
+			"key": "locale",
+			"value": "en-US",
+			"enabled": true
+		},
+		{
+			"key": "country",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "currency",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "originPlace",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "destinationPlace",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-02-25T18:44:56.290Z",
+	"_postman_exported_using": "Postman/7.36.5"
+}

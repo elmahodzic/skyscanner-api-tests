@@ -1,0 +1,29 @@
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.*;
+import io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.*;
+
+
+public class getQoutes {
+
+	@Test
+	public void skyscannerQuotes() {
+		
+		given().
+		header("apiKey","ra66933236979928").
+		header("x-rapidapi-key", "4703c36152msh00a9bbef17f9846p1b0abfjsn65c56589cdb3").
+		header("x-rapidapi-host","skyscanner-skyscanner-flight-search-v1.p.rapidapi.com").
+		get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/BA/BAM/en-US/BELI-sky/BER-sky/2021-03-02").
+		then().	
+		statusCode(200);
+		
+	
+
+	}
+	
+	
+	
+	
+	
+}
+
