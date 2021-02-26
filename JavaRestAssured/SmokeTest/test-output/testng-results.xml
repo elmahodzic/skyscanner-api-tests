@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2021-02-25T19:12:53 GMT+01:00" name="Default suite" finished-at="2021-02-25T19:12:57 GMT+01:00" duration-ms="3830">
+  <suite started-at="2021-02-26T07:53:17 GMT+01:00" name="Default suite" finished-at="2021-02-26T07:53:21 GMT+01:00" duration-ms="4268">
     <groups>
     </groups>
-    <test started-at="2021-02-25T19:12:53 GMT+01:00" name="Default test" finished-at="2021-02-25T19:12:57 GMT+01:00" duration-ms="3830">
+    <test started-at="2021-02-26T07:53:17 GMT+01:00" name="Default test" finished-at="2021-02-26T07:53:21 GMT+01:00" duration-ms="4268">
       <class name="getQoutes">
-        <test-method signature="skyscannerQuotes()[pri:0, instance:getQoutes@424e1977]" started-at="2021-02-25T19:12:53 GMT+01:00" name="skyscannerQuotes" finished-at="2021-02-25T19:12:57 GMT+01:00" duration-ms="3751" status="PASS">
+        <test-method signature="skyscannerQuotes()[pri:0, instance:getQoutes@424e1977]" started-at="2021-02-26T07:53:17 GMT+01:00" name="skyscannerQuotes" finished-at="2021-02-26T07:53:21 GMT+01:00" duration-ms="4176" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- skyscannerQuotes -->
