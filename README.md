@@ -15,3 +15,13 @@ For install newman globally on your system, run `$ npm install -g newman`
 ## Usage
 After you export your Postman Collection as a json file from the Postman App, you can run it using Newman with <br />
  `$ newman run skyscannerCollection.json –e skyscannerEnvironmentt.json`
+# skyscannerApiTests - Java & Rest Assured
+## General info
+Tets case for Smoke Test using endpoints to simulate the user journey through the Skyscanner Flight Search API. <br/>Based on the entered parameters, the API returns a response with information about the cheapest quotes.
+## Prerequisites
+•	<a href ="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">Install Java 1.7.</a> <br />
+•	<a href ="https://rest-assured.io/">Refer REST Assured</a>
+## Executing specs
+For now, The test suites can be run directly by your IDE with Run as TESTNG test.
+## Note:
+The test currently contains only one class, it will be upgraded over time.
