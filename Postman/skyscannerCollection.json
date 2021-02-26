@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "f276e734-91f0-4f3d-8d4f-4eb19d8e7ad1",
-		"name": "skyscanner1",
+		"_postman_id": "f3c9c4c8-75ca-4bc0-8e27-60aed03b1c6b",
+		"name": "skyscannerV1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Currencies",
+			"name": "List Currencies",
 			"event": [
 				{
 					"listen": "test",
@@ -64,12 +64,12 @@
 						},
 						{
 							"key": "value",
-							"value": "ra66933236979928",
+							"value": "{{shortapikey}}",
 							"type": "string"
 						},
 						{
 							"key": "key",
-							"value": "shortapikey",
+							"value": "apiKey",
 							"type": "string"
 						}
 					]
@@ -78,12 +78,12 @@
 				"header": [
 					{
 						"key": "x-rapidapi-key",
-						"value": "4703c36152msh00a9bbef17f9846p1b0abfjsn65c56589cdb3",
+						"value": "{{x-rapidapi-key}}",
 						"type": "text"
 					},
 					{
 						"key": "x-rapidapi-host",
-						"value": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+						"value": "{{x-rapidapi-host}}",
 						"type": "text"
 					},
 					{
@@ -139,7 +139,7 @@
 							"\r",
 							"function getCode(Countries) {\r",
 							"for (i = 0; i < Countries.length; i++) {\r",
-							"  if( Countries[i].Name == \"Bosnia and Herzegovina\") {\r",
+							"  if( Countries[i].Name == \"Croatia\") {\r",
 							"   return Countries[i].Code;   \r",
 							"  }}};\r",
 							"pm.environment.set(\"country\", countryCode);"
@@ -159,12 +159,12 @@
 						},
 						{
 							"key": "value",
-							"value": "ra66933236979928",
+							"value": "{{shortapikey}}",
 							"type": "string"
 						},
 						{
 							"key": "key",
-							"value": "shortapikey",
+							"value": "apiKey",
 							"type": "string"
 						}
 					]
@@ -204,7 +204,7 @@
 			"response": []
 		},
 		{
-			"name": "OriginPlace",
+			"name": "originPlace",
 			"event": [
 				{
 					"listen": "test",
@@ -244,7 +244,7 @@
 							"\r",
 							"function getCode(Places) {\r",
 							"for (i = 0; i < Places.length; i++) {\r",
-							"  if( Places[i].PlaceName == \"Sarajevo International\") {\r",
+							"  if( Places[i].PlaceName == \"Zagreb\") {\r",
 							"   return Places[i].PlaceId;   \r",
 							"  }}};\r",
 							"pm.environment.set(\"originPlace\", originPlace);"
@@ -264,12 +264,12 @@
 						},
 						{
 							"key": "value",
-							"value": "ra66933236979928",
+							"value": "{{shortapikey}}",
 							"type": "string"
 						},
 						{
 							"key": "key",
-							"value": "shortapikey",
+							"value": "apiKey",
 							"type": "string"
 						}
 					]
@@ -293,7 +293,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/apiservices/autosuggest/v1.0/{{country}}/{{currency}}/{{locale}}/?query=Sarajevo",
+					"raw": "{{base_url}}/apiservices/autosuggest/v1.0/{{country}}/{{currency}}/{{locale}}/?query=Zagreb",
 					"host": [
 						"{{base_url}}"
 					],
@@ -309,7 +309,7 @@
 					"query": [
 						{
 							"key": "query",
-							"value": "Sarajevo"
+							"value": "Zagreb"
 						}
 					]
 				}
@@ -323,7 +323,6 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = pm.response.json();\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
 							"  pm.response.to.have.status(200);\r",
@@ -377,12 +376,12 @@
 						},
 						{
 							"key": "value",
-							"value": "ra66933236979928",
+							"value": "{{shortapikey}}",
 							"type": "string"
 						},
 						{
 							"key": "key",
-							"value": "shortapikey",
+							"value": "apiKey",
 							"type": "string"
 						}
 					]
@@ -430,121 +429,13 @@
 			"response": []
 		},
 		{
-			"name": "Browse Routes",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", () => {\r",
-							"  pm.expect(pm.response.code).to.eql(200);\r",
-							"});\r",
-							"pm.test(\"Body contains string\",() => {\r",
-							" pm.expect(pm.response.text()).to.include(\"QuoteId\");\r",
-							" pm.expect(pm.response.text()).to.include(\"DestinationId\");\r",
-							" pm.expect(pm.response.text()).to.include(\"DepartureDate\");\r",
-							"});\r",
-							"pm.test(\"Content-Type header is present\", () => {\r",
-							"  pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"pm.test(\"x-skyscnr-expr-e header is true\", () => {\r",
-							"  pm.expect(pm.response.headers.get('x-skyscnr-expr-e')).to.eql('true');\r",
-							"});\r",
-							"pm.test(\"X-RapidAPI-Region is AWS - eu-central-1\", function () {\r",
-							"   pm.response.to.have.header(\"X-RapidAPI-Region\");\r",
-							"   pm.response.to.be.header(\"X-RapidAPI-Region\", \"AWS - eu-central-1\");\r",
-							"});\r",
-							"//const responseJson = pm.response.json();\r",
-							"//var Places = responseJson.Places ;\r",
-							"//var originId = getInfo(Places);\r",
-							"\r",
-							"//function getInfo(Places) {\r",
-							"//for (i = 0; i < Places.length; i++) {\r",
-							" // if( Places[i].PlaceId == \"81914\") {\r",
-							"   //return Places[i].Name;   \r",
-							"  //}}};\r",
-							"//console.log(originId);\r",
-							"\r",
-							"//  var DestinationId = getInfo(Places);\r",
-							"//function getInfo(Places) {\r",
-							"//for (i = 0; i < Places.length; i++) {\r",
-							"//  if( Places[i].PlaceId == \"42514\") {\r",
-							"// return Places[i].Name;   \r",
-							" // }}};\r",
-							"//console.log(\"DestinationId\");\r",
-							"  //console.log(\"Your filght start at\" + originId +\"and end at\" + DestinationId);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "ra66933236979928",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "shortapikey",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-rapidapi-key",
-						"value": "{{x-rapidapi-key}}",
-						"type": "text"
-					},
-					{
-						"key": "x-rapidapi-host",
-						"value": "{{x-rapidapi-host}}",
-						"type": "text"
-					},
-					{
-						"key": "useQueryString",
-						"value": "{{useQueryString}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{base_url}}/apiservices/browseroutes/v1.0/{{country}}/{{currency}}/{{locale}}/{{originPlace}}/{{destinationPlace}}/2021-04-10",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"apiservices",
-						"browseroutes",
-						"v1.0",
-						"{{country}}",
-						"{{currency}}",
-						"{{locale}}",
-						"{{originPlace}}",
-						"{{destinationPlace}}",
-						"2021-04-10"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Browse Quotes",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = pm.response.json();\r",
+							"\r",
 							"const country = pm.collectionVariables.get(\"country\");\r",
 							"\r",
 							"pm.test(\"Status code is 200\", function () {\r",
@@ -572,6 +463,32 @@
 							"pm.test(\"Server header is RapidAPI-1.2.7\", () => {\r",
 							"  pm.expect(pm.response.headers.get('Server')).to.eql('RapidAPI-1.2.7');\r",
 							"});\r",
+							"\r",
+							"pm.test(\"Origin place name is Zagreb\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"Name\\\" : \\\"Zagreb\\\"\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Destination place is Berlin Brandenburg\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"Name\\\" : \\\"Berlin Brandenburg\\\"\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Carrier Name is Turkish Airlines\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"Name\\\" : \\\"Turkish Airlines\\\"\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Currency symbol is KM\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"Symbol\\\" : \\\"КМ\\\"\");\r",
+							"});\r",
+							"const responseJson = pm.response.json();\r",
+							"var Carriers = responseJson.Carriers ;\r",
+							"var CarrierName = getName(Carriers);\r",
+							"\r",
+							"function getName(Carriers) {\r",
+							"for (i = 0; i < Carriers.length; i++) {\r",
+							"  if( Carriers[i].Name == \"Turkish Airlines\") { \r",
+							"      console.log(\"Carrier is Turkish Airlines\") \r",
+							"  }}};\r",
+							"\r",
 							""
 						],
 						"type": "text/javascript"
@@ -589,12 +506,12 @@
 						},
 						{
 							"key": "value",
-							"value": "ra66933236979928",
+							"value": "{{shortapikey}}",
 							"type": "string"
 						},
 						{
 							"key": "key",
-							"value": "shortapikey",
+							"value": "apiKey",
 							"type": "string"
 						}
 					]
@@ -618,13 +535,9 @@
 					}
 				],
 				"url": {
-					"raw": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/{{country}}/{{currency}}/{{locale}}/{{originplace}}/{{destinationplace}}/{{outboundpartialdate}}",
-					"protocol": "https",
+					"raw": "{{base_url}}/apiservices/browsequotes/v1.0/{{country}}/{{currency}}/{{locale}}/{{originPlace}}/{{destinationPlace}}/2021-03-05",
 					"host": [
-						"skyscanner-skyscanner-flight-search-v1",
-						"p",
-						"rapidapi",
-						"com"
+						"{{base_url}}"
 					],
 					"path": [
 						"apiservices",
@@ -633,93 +546,28 @@
 						"{{country}}",
 						"{{currency}}",
 						"{{locale}}",
-						"{{originplace}}",
-						"{{destinationplace}}",
-						"{{outboundpartialdate}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Browse Dates",
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "ra66933236979928",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "shortapikey",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-rapidapi-key",
-						"value": "{{x-rapidapi-key}}",
-						"type": "text"
-					},
-					{
-						"key": "x-rapidapi-host",
-						"value": "{{x-rapidapi-host}}",
-						"type": "text"
-					},
-					{
-						"key": "useQueryString",
-						"value": "{{useQueryString}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "{{base_url}}/apiservices/browsedates/v1.0/{{country}}/{{currency}}/{{locale}}}/{{originPlace}}/{{destinationPlace}}/2021-04-10?inboundpartialdate=2021-04-20",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"apiservices",
-						"browsedates",
-						"v1.0",
-						"{{country}}",
-						"{{currency}}",
-						"{{locale}}}",
 						"{{originPlace}}",
 						"{{destinationPlace}}",
-						"2021-04-10"
-					],
-					"query": [
-						{
-							"key": "inboundpartialdate",
-							"value": "2021-04-20"
-						}
+						"2021-03-05"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Browse Dates Inbound",
+			"name": "Browse Routes",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"var jsonData = pm.response.json();\r",
-							"const country = pm.collectionVariables.get(\"country\");\r",
-							"\r",
 							"pm.test(\"Status code is 200\", () => {\r",
 							"  pm.expect(pm.response.code).to.eql(200);\r",
+							"});\r",
+							"pm.test(\"Body contains string\",() => {\r",
+							" pm.expect(pm.response.text()).to.include(\"QuoteId\");\r",
+							" pm.expect(pm.response.text()).to.include(\"DestinationId\");\r",
+							" pm.expect(pm.response.text()).to.include(\"DepartureDate\");\r",
 							"});\r",
 							"pm.test(\"Content-Type header is present\", () => {\r",
 							"  pm.response.to.have.header(\"Content-Type\");\r",
@@ -731,19 +579,30 @@
 							"   pm.response.to.have.header(\"X-RapidAPI-Region\");\r",
 							"   pm.response.to.be.header(\"X-RapidAPI-Region\", \"AWS - eu-central-1\");\r",
 							"});\r",
-							"var jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"Content-Type header is application/json\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+							"pm.test(\"Origin place name is Zagreb\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"Name\\\" : \\\"Zagreb\\\"\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Server header is RapidAPI-1.2.7\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Server')).to.eql('RapidAPI-1.2.7');\r",
+							"pm.test(\"Destination place is Berlin Brandenburg\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"Name\\\" : \\\"Berlin Brandenburg\\\"\");\r",
 							"});\r",
 							"\r",
-							"pm.test(\"Collect inboundpartialdate from the response\", function () {\r",
-							"    pm.collectionVariables.set(\"inboundpartialdate\",jsonData.QuoteDateTime);\r",
-							"});"
+							"pm.test(\"Country Name is Germany\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"CountryName\\\" : \\\"Germany\\\"\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Currency symbol is KM\", () => {\r",
+							"pm.expect(pm.response.text()).to.include(\"\\\"Symbol\\\" : \\\"КМ\\\"\");\r",
+							"});\r",
+							"const responseJson = pm.response.json();\r",
+							"var Routes = responseJson.Routes ;\r",
+							"var priceFromRoutes = getPrice(Routes);\r",
+							"\r",
+							"function getPrice(Routes) {\r",
+							"for (i = 0; i < Routes.length; i++) {\r",
+							"  if( Routes[i].Price == \"373\") { \r",
+							"      console.log(\"Price for this fligt is 373 KM\" ) \r",
+							"  }}};"
 						],
 						"type": "text/javascript"
 					}
@@ -760,12 +619,12 @@
 						},
 						{
 							"key": "value",
-							"value": "ra66933236979928",
+							"value": "{{shortapikey}}",
 							"type": "string"
 						},
 						{
 							"key": "key",
-							"value": "shortapikey",
+							"value": "apiKey",
 							"type": "string"
 						}
 					]
@@ -789,218 +648,9 @@
 					}
 				],
 				"url": {
-					"raw": "{{base_url}}/apiservices/browsedates/v1.0/{{country}}/{{currency}}/{{locale}}}/{{originPlace}}/{{destinationPlace}}/2021-04-10",
+					"raw": "{{base_url}}/apiservices/browseroutes/v1.0/{{country}}/{{currency}}/{{locale}}/{{originPlace}}/{{destinationPlace}}/2021-03-05",
 					"host": [
 						"{{base_url}}"
-					],
-					"path": [
-						"apiservices",
-						"browsedates",
-						"v1.0",
-						"{{country}}",
-						"{{currency}}",
-						"{{locale}}}",
-						"{{originPlace}}",
-						"{{destinationPlace}}",
-						"2021-04-10"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Browse Quotes Inbound",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = pm.response.json();\r",
-							"const country = pm.collectionVariables.get(\"country\");\r",
-							"\r",
-							"pm.test(\"Status code is 200\", () => {\r",
-							"  pm.expect(pm.response.code).to.eql(200);\r",
-							"});\r",
-							"pm.test(\"Content-Type header is present\", () => {\r",
-							"  pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"pm.test(\"x-skyscnr-expr-e header is true\", () => {\r",
-							"  pm.expect(pm.response.headers.get('x-skyscnr-expr-e')).to.eql('true');\r",
-							"});\r",
-							"pm.test(\"X-RapidAPI-Region is AWS - eu-central-1\", function () {\r",
-							"   pm.response.to.have.header(\"X-RapidAPI-Region\");\r",
-							"   pm.response.to.be.header(\"X-RapidAPI-Region\", \"AWS - eu-central-1\");\r",
-							"});\r",
-							"var jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"Content-Type header is application/json\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Server header is RapidAPI-1.2.7\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Server')).to.eql('RapidAPI-1.2.7');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Collect inboundpartialdate from the response\", function () {\r",
-							"    pm.collectionVariables.set(\"inboundpartialdate\",jsonData.QuoteDateTime);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "ra66933236979928",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "shortapikey",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-rapidapi-key",
-						"value": "{{x-rapidapi-key}}",
-						"type": "text"
-					},
-					{
-						"key": "x-rapidapi-host",
-						"value": "{{x-rapidapi-host}}",
-						"type": "text"
-					},
-					{
-						"key": "useQueryString",
-						"value": "{{useQueryString}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/{{country}}/{{currency}}/{{locale}}}/{{originplace}}/{{destinationplace}}/{{outboundpartialdate}}/{{inboundpartialdate}}",
-					"protocol": "https",
-					"host": [
-						"skyscanner-skyscanner-flight-search-v1",
-						"p",
-						"rapidapi",
-						"com"
-					],
-					"path": [
-						"apiservices",
-						"browsequotes",
-						"v1.0",
-						"{{country}}",
-						"{{currency}}",
-						"{{locale}}}",
-						"{{originplace}}",
-						"{{destinationplace}}",
-						"{{outboundpartialdate}}",
-						"{{inboundpartialdate}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Browse Routes Inbound",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = pm.response.json();\r",
-							"const country = pm.collectionVariables.get(\"country\");\r",
-							"\r",
-							"pm.test(\"Status code is 200\", () => {\r",
-							"  pm.expect(pm.response.code).to.eql(200);\r",
-							"});\r",
-							"pm.test(\"Content-Type header is present\", () => {\r",
-							"  pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"pm.test(\"x-skyscnr-expr-e header is true\", () => {\r",
-							"  pm.expect(pm.response.headers.get('x-skyscnr-expr-e')).to.eql('true');\r",
-							"});\r",
-							"pm.test(\"X-RapidAPI-Region is AWS - eu-central-1\", function () {\r",
-							"   pm.response.to.have.header(\"X-RapidAPI-Region\");\r",
-							"   pm.response.to.be.header(\"X-RapidAPI-Region\", \"AWS - eu-central-1\");\r",
-							"});\r",
-							"var jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"Content-Type header is application/json\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Server header is RapidAPI-1.2.7\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Server')).to.eql('RapidAPI-1.2.7');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Collect inboundpartialdate from the response\", function () {\r",
-							"    pm.collectionVariables.set(\"inboundpartialdate\",jsonData.QuoteDateTime);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "ra66933236979928",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "shortapikey",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-rapidapi-key",
-						"value": "{{x-rapidapi-key}}",
-						"type": "text"
-					},
-					{
-						"key": "x-rapidapi-host",
-						"value": "{{x-rapidapi-host}}",
-						"type": "text"
-					},
-					{
-						"key": "useQueryString",
-						"value": "{{useQueryString}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/{{country}}/{{currency}}/{{locale}}/{{originplace}}/{{destinationplace}}/{{outboundpartialdate}}/{{inboundpartialdate}}",
-					"protocol": "https",
-					"host": [
-						"skyscanner-skyscanner-flight-search-v1",
-						"p",
-						"rapidapi",
-						"com"
 					],
 					"path": [
 						"apiservices",
@@ -1009,115 +659,9 @@
 						"{{country}}",
 						"{{currency}}",
 						"{{locale}}",
-						"{{originplace}}",
-						"{{destinationplace}}",
-						"{{outboundpartialdate}}",
-						"{{inboundpartialdate}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "To Skyscanner",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = pm.response.json();\r",
-							"const country = pm.collectionVariables.get(\"country\");\r",
-							"\r",
-							"pm.test(\"Status code is 200\", () => {\r",
-							"  pm.expect(pm.response.code).to.eql(200);\r",
-							"});\r",
-							"pm.test(\"Content-Type header is present\", () => {\r",
-							"  pm.response.to.have.header(\"Content-Type\");\r",
-							"});\r",
-							"pm.test(\"x-skyscnr-expr-e header is true\", () => {\r",
-							"  pm.expect(pm.response.headers.get('x-skyscnr-expr-e')).to.eql('true');\r",
-							"});\r",
-							"pm.test(\"X-RapidAPI-Region is AWS - eu-central-1\", function () {\r",
-							"   pm.response.to.have.header(\"X-RapidAPI-Region\");\r",
-							"   pm.response.to.be.header(\"X-RapidAPI-Region\", \"AWS - eu-central-1\");\r",
-							"});\r",
-							"var jsonData = pm.response.json();\r",
-							"\r",
-							"pm.test(\"Content-Type header is application/json\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Server header is RapidAPI-1.2.7\", () => {\r",
-							"  pm.expect(pm.response.headers.get('Server')).to.eql('RapidAPI-1.2.7');\r",
-							"});\r",
-							"\r",
-							"pm.test(\"Collect inboundpartialdate from the response\", function () {\r",
-							"    pm.collectionVariables.set(\"inboundpartialdate\",jsonData.QuoteDateTime);\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "apikey",
-					"apikey": [
-						{
-							"key": "in",
-							"value": "header",
-							"type": "string"
-						},
-						{
-							"key": "value",
-							"value": "ra66933236979928",
-							"type": "string"
-						},
-						{
-							"key": "key",
-							"value": "shortapikey",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "x-rapidapi-key",
-						"value": "{{x-rapidapi-key}}",
-						"type": "text"
-					},
-					{
-						"key": "x-rapidapi-host",
-						"value": "{{x-rapidapi-host}}",
-						"type": "text"
-					},
-					{
-						"key": "useQueryString",
-						"value": "{{useQueryString}}",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/{{country}}/{{currency}}/{{locale}}}/{{originplace}}/{{destinationplace}}/{{outboundpartialdate}}/{{inboundpartialdate}}",
-					"protocol": "https",
-					"host": [
-						"skyscanner-skyscanner-flight-search-v1",
-						"p",
-						"rapidapi",
-						"com"
-					],
-					"path": [
-						"apiservices",
-						"browseroutes",
-						"v1.0",
-						"{{country}}",
-						"{{currency}}",
-						"{{locale}}}",
-						"{{originplace}}",
-						"{{destinationplace}}",
-						"{{outboundpartialdate}}",
-						"{{inboundpartialdate}}"
+						"{{originPlace}}",
+						"{{destinationPlace}}",
+						"2021-03-05"
 					]
 				}
 			},
