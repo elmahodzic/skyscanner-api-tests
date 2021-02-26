@@ -20,7 +20,8 @@ After you export your Postman Collection as a json file from the Postman App, yo
 Tets case for Smoke Test using endpoints to simulate the user journey through the Skyscanner Flight Search API. <br/>Based on the entered parameters, the API returns a response with information about the cheapest quotes.
 ## Prerequisites
 •	<a href ="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">Install Java 11.0.8.</a> <br />
-•	<a href ="https://rest-assured.io/">Refer REST Assured</a>
+•	<a href ="https://rest-assured.io/">Refer REST Assured</a><br />
+• For safety reasons <em>apiKey</em>, <em>x-rapidapi-key</em> and <em>x-rapidapi-host</em> can't be found in the suit, so when you get them set them in class, in the header.
 ## Executing specs
 For now, The test suites can be run directly by your IDE with Run as TESTNG test.
 ## Note
